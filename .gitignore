@@ -1,5 +1,6 @@
 # API keys — never commit these
 .env
+.mise.tomle
 
 # Python
 __pycache__/
