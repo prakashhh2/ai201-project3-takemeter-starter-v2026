@@ -264,15 +264,25 @@ jumpy between seeds.
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* I gave the AI tool my three definitions and asked it to
+  generate eight short posts designed to sit on the label boundaries.
+- *What came back:* It produced examples involving unsupported verdicts,
+  immediate feelings, statistics, transfer fees, and tactical sequences.
+- *What I changed:* I classified every example myself and tightened the
+  analysis rule: a concrete detail must actually support or explain the
+  conclusion; merely mentioning a number or event does not make a post
+  analysis.
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
-- *What I changed:*
+- *What I asked for:* I supplied the definitions and decision rule to AI and
+  asked it to propose labels for a batch of collected comments.
+- *What came back:* It returned preliminary labels for the 185 non-cold rows,
+  including short reactions, broad transfer verdicts, and posts with named
+  comparisons.
+- *What I changed:* I read every proposed label against the full post and
+  corrected cases where a detail did not support the claim or where the post
+  was primarily an immediate personal response.
 
 **Pre-labelling disclosure:**
 
