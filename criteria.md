@@ -53,11 +53,15 @@ whether you hit them:
 
 ## 1.
 
-<!-- Your criterion. It must name a number. -->
+The trained classifier will reach at least **0.65 overall accuracy** on the
+held-out test set for each of the three seeds.
 
 
 
-**Why this target:**
+**Why this target:** With three labels, a roughly even random guess is about
+0.33 accuracy. A 0.65 target asks the model to learn useful distinctions from
+the short, informal `r/soccer` posts without pretending that every reaction
+and hot take has an obvious boundary.
 
 
 
@@ -65,11 +69,15 @@ whether you hit them:
 
 ## 2.
 
-<!-- Your criterion. -->
+Every label will have an **F1 score of at least 0.60** on the held-out test set
+for all three seeds.
 
 
 
-**Why this target:**
+**Why this target:** `reaction` overlaps with unsupported `hot_take` because
+both can be emotional and brief. The 0.60 floor allows that harder boundary
+to be noisier than the overall score, while still requiring the model to
+recognize all three labels instead of succeeding mainly on `analysis`.
 
 
 
@@ -77,11 +85,16 @@ whether you hit them:
 
 ## 3.
 
-<!-- Your criterion. -->
+The labelled dataset will be balanced enough that **each label makes up at
+least 20% and at most 50% of the 200 posts**.
 
 
 
-**Why this target:**
+**Why this target:** A 20% minimum gives each label about 40 examples and
+roughly six test examples before seed variation, so `reaction` or `hot_take`
+cannot disappear into a tiny test count. A 50% maximum prevents the model
+from getting a deceptively good score by mostly guessing the dominant kind of
+football comment.
 
 
 
@@ -89,11 +102,15 @@ whether you hit them:
 
 ## 4.
 
-<!-- Your criterion. -->
+On a blind second labelling of **30 posts** by another person using the same
+definitions, the label agreement will be at least **80%**.
 
 
 
-**Why this target:**
+**Why this target:** The most important risk in this taxonomy is inconsistent
+judgment at the `analysis`/`hot_take` boundary. An 80% agreement target leaves
+room for genuinely ambiguous banter while requiring the written decision rule
+to produce a stable signal for most posts.
 
 
 
@@ -101,11 +118,16 @@ whether you hit them:
 
 ## 5.
 
-<!-- Your criterion. -->
+For each seed, the model's most-confident third of predictions will have at
+least **0.70 accuracy and will outperform its least-confident third by at least
+0.10**.
 
 
 
-**Why this target:**
+**Why this target:** The short posts often omit context, so confidence should
+help identify the examples that are safer to use automatically. A 0.10 gap is
+large enough to be useful, while 0.70 for the most-confident third is less
+fragile than demanding near-perfect confidence from a small held-out set.
 
 
 
