@@ -171,19 +171,25 @@ boundaries, then applied the rules above:
 <!-- Where you collected from, how you labelled, your counts, and three hard
      cases. -->
 
-**Where the posts came from:**
+**Where the posts came from:** Public comments from several `r/soccer` Daily
+Discussion threads, including the [August 31, 2026 thread](https://www.reddit.com/r/soccer/comments/1w3kd8b/daily_discussion_august_31_2026/)
+and an earlier [Daily Discussion thread](https://www.reddit.com/r/soccer/comments/1mw4swx/daily_discussion/).
+I collected 205 unique comments and kept the full text of each selected
+comment.
 
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+**How I labelled them:** I applied the definitions directly to the first 20
+rows and marked them `cold`. I then used AI to pre-label the remaining 185
+rows, read every row, and corrected labels when the decision rule required it.
+The `note` column records this workflow; no row was accepted without review.
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| `analysis` | 73 | 35.6% |
+| `hot_take` | 85 | 41.5% |
+| `reaction` | 47 | 22.9% |
+| **Total** | **205** | **100%** |
 
 **Three hard cases**
 
@@ -191,25 +197,33 @@ Say so plainly — the disclosure is required, not penalised. -->
      been, and what you chose. These are worth more than the easy 190. -->
 
 **1.**
-> *The post:*
+> *The post:* “What happens when both teams are good at counter for attacks and
+> so both are not keeping the ball, generally one team tries more than others”
 >
-> *Could have been:*
+> *Could have been:* `analysis` or `hot_take`
 >
-> *I chose, because:*
+> *I chose, because:* I chose `analysis` because it is asking about a specific
+> tactical situation and whether one side creates more of the action, rather
+> than making a purely general insult or verdict.
 
 **2.**
-> *The post:*
+> *The post:* “He can complete passes, that's a massive upgrade over
+> Mamardashvili”
 >
-> *Could have been:*
+> *Could have been:* `analysis` or `hot_take`
 >
-> *I chose, because:*
+> *I chose, because:* I chose `analysis` because the named comparison is the
+> reason offered for the positive judgment.
 
 **3.**
-> *The post:*
+> *The post:* “I stop paying attention for 12 hours and now there's no Eze,
+> Savinho will cost nearly 100m, and Chelsea have Enciso fml”
 >
-> *Could have been:*
+> *Could have been:* `reaction` or `hot_take`
 >
-> *I chose, because:*
+> *I chose, because:* I chose `reaction` because it reports the writer's
+> immediate shock at several transfer updates rather than arguing a general
+> claim about the players.
 
 ---
 
@@ -253,6 +267,12 @@ of next unit's variance. -->
 - *What I changed:*
 
 **Pre-labelling disclosure:**
+
+I used AI to propose labels for the 185 non-cold rows after supplying the three
+definitions and decision rule. I read and checked every proposed label against
+the post itself, especially the `analysis`/`hot_take` and
+`hot_take`/`reaction` boundaries, and corrected the rows where the evidence or
+recency rule did not fit.
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
