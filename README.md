@@ -84,33 +84,83 @@ Candidate distinctions I saw in the reading:
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `analysis`
 
-**Definition:**
-
-**Example 1:**
->
-
-**Example 2:**
->
-
-### `label_two`
-
-**Definition:**
+**Definition:** Makes an argument about football using at least one specific,
+checkable detail that does real work in the argument, such as a statistic,
+fee, date, named comparison, lineup choice, or tactical sequence.
 
 **Example 1:**
->
+> “Chelsea were absolutely diabolical but ... a midfield that ran, tackled and
+> passed more and better than them.” The post then explains how space behind
+> the advanced wide players helped create the goal. ([source](https://www.reddit.com/r/soccer/comments/x1iik3/daily_discussion/))
 
 **Example 2:**
->
+> “Milan are having a great mercato. They've kept most of their good players
+> ... and bought [a] combination of young [and] experienced players.” It names
+> several signings and explains the basis for the evaluation. ([source](https://www.reddit.com/r/soccer/comments/1mw4swx/daily_discussion/))
+
+### `hot_take`
+
+**Definition:**
+Makes a confident general claim or verdict about a player, club, manager, or
+football decision without offering support that can be checked. A strong tone
+alone does not make a post analysis.
+
+**Example 1:**
+> “Genuinely think Spurs are about to complete the worst transfer window in
+> football history.” ([source](https://www.reddit.com/r/soccer/comments/1w3kd8b/daily_discussion_august_31_2026/))
+
+**Example 2:**
+> “people finally realizing that de zerbi's talent id STINKS.” ([source](https://www.reddit.com/r/soccer/comments/1w3kd8b/daily_discussion_august_31_2026/))
+
+### `reaction`
+
+**Definition:** Gives an immediate response to a match, transfer, or football
+event that just happened, centered on the writer's feeling or personal
+experience rather than a general argument.
+
+**Example 1:**
+> “I'm outraged that we haven't signed all players. Sack the board.” ([source](https://www.reddit.com/r/soccer/comments/1w5de0k/daily_discussion_september_2_2026/))
+
+**Example 2:**
+> “For once I would like to go to Old Trafford with a fully fit squad.” ([source](https://www.reddit.com/r/soccer/comments/x1iik3/daily_discussion/))
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** `analysis` vs. `hot_take`
 
 **The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
+If a specific detail is used to explain or support the conclusion, it is
+`analysis`, even if the tone is heated. If the detail is only decorative, or
+the post gives no support for its verdict, it is `hot_take`. A post about what
+the writer is feeling right now is `reaction` unless it also develops a
+supported general argument.
+
+**Borderline post from the reading:**
+
+> “Overpaying for mid players ... extending a goalkeeper that hasn't shown
+> anything beyond 6 games ...”
+
+This could be `analysis` or `hot_take`. I chose `analysis` because the writer
+uses concrete signings, a six-game sample, and a captaincy decision as reasons
+for calling the window risky; those details carry the judgment.
+
+### Boundary stress-test
+
+I asked an AI tool to generate eight short posts designed to sit on these
+boundaries, then applied the rules above:
+
+| Synthetic post | Label | Why |
+|---|---|---|
+| “They had 61% possession and still created only one shot on target.” | `analysis` | The statistic supports the criticism. |
+| “That midfield is finished; it will never win anything.” | `hot_take` | It is a broad unsupported verdict. |
+| “The final whistle just went and I’m still shaking.” | `reaction` | It reports an immediate feeling. |
+| “The £50m fee matters because the club sold its top scorer for less last summer.” | `analysis` | The comparison explains the conclusion. |
+| “£50m for him is a disaster.” | `hot_take` | The fee is asserted, but no reason is supplied. |
+| “I watched the last ten minutes through my hands; I can’t believe we held on.” | `reaction` | It is a personal response to a recent event. |
+| “The red card changed everything.” | `hot_take` | It is a general claim without a supporting detail. |
+| “Both fullbacks pushed high, the winger lost the ball, and the counter came through that gap.” | `analysis` | The post gives a checkable causal sequence. |
 
 
 
