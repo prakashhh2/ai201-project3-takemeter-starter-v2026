@@ -233,13 +233,21 @@ The `note` column records this workflow; no row was accepted without review.
 
 **Base model:**
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+`distilbert-base-uncased`
+
+**Settings:** 3 epochs, learning rate `2e-5`, batch size 16, seed 42, and
+maximum sequence length 128.
 
 **Anything I changed from the defaults, and why:**
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
+Nothing. I used the notebook defaults.
+
+**Device:** CPU (`torch 2.14.1+cu130`).
+
+**Split sizes:** 143 train / 31 validation / 31 test. The test split contains
+11 `analysis`, 13 `hot_take`, and 7 `reaction` posts. `reaction` is below the
+roughly-eight-example guideline, so its next-unit metric may be especially
+jumpy between seeds.
 
 
 
