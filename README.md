@@ -42,6 +42,36 @@
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
 
+I am building a text classifier for public discussion posts from `r/soccer`, a
+large football community with match discussion, transfer talk, analysis,
+questions, jokes, and emotional reactions. I read 36 public comments across
+several Daily Discussion and transfer-discussion threads, rather than taking
+examples from one match or one release. The final classifier will sort posts
+into a small set of distinctions that I will define after collecting the full
+dataset.
+
+### Milestone 1 reading notes
+
+The posts that felt more substantial usually supplied a checkable detail or
+explained a cause: a statistic, fee, date, lineup choice, comparison, or a
+chain of reasoning. The least substantial posts were often one-line jokes,
+immediate emotional responses, or confident verdicts with no support.
+
+Candidate distinctions I saw in the reading:
+
+1. **Evidence-backed argument vs. unsupported assertion:** some posts use a
+   number, date, quote, comparison, or concrete match detail to carry the
+   point; others make a strong claim without offering support.
+2. **Immediate reaction vs. general football claim:** some posts describe the
+   writer's feeling about a match or transfer that just happened; others make
+   a broader claim about a player, club, manager, or the sport.
+3. **Explanation vs. verdict:** some posts connect an outcome to tactics,
+   squad construction, or another identifiable cause; others stop at a
+   judgment such as calling a signing excellent, useless, or disastrous.
+4. **Substantive discussion vs. banter/one-liner:** some posts develop a
+   comparison over several sentences, while others are mainly a joke, insult,
+   short agreement, or quick question.
+
 
 
 ---
