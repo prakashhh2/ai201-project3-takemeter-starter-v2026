@@ -238,6 +238,36 @@ The `note` column records this workflow; no row was accepted without review.
 **Settings:** 3 epochs, learning rate `2e-5`, batch size 16, seed 42, and
 maximum sequence length 128.
 
+## Baseline vs. Trained
+
+**Prediction, written before checking the baseline:** I predict the trained
+model will beat the zero-shot baseline most clearly on `analysis` and
+`hot_take`, while `reaction` will remain the hardest label.
+
+The baseline used `facebook/bart-large-mnli`, the definitions in
+`label_definitions.txt`, and the same 31 held-out posts in `test_split.csv` as
+the trained model. It did not fall back to a random sample.
+
+| Measure | Baseline | Trained | Difference |
+|---|---|---|---|
+| Overall accuracy | 0.419 | 0.677 | +0.258 |
+| Macro F1 | 0.427 | 0.514 | +0.087 |
+| F1 — `analysis` | 0.421 | 0.833 | +0.412 |
+| F1 — `hot_take` | 0.333 | 0.710 | +0.376 |
+| F1 — `reaction` | 0.526 | 0.000 | -0.526 |
+
+The trained model beat the baseline on `analysis` and `hot_take`, as
+predicted, but `reaction` was still its hardest label and its F1 fell below
+the baseline. The baseline results are in `baseline_results.json`.
+
+### Definition ablation
+
+On the same 31 posts, removing the definitions and using bare label names
+reduced accuracy from 0.419 to 0.355 (-0.065) and macro F1 from 0.427 to 0.255
+(-0.172). The bare-label control is recorded in
+`baseline_bare_names_results.json`; the reported baseline above uses the
+definitions-based run.
+
 **Anything I changed from the defaults, and why:**
 
 Nothing. I used the notebook defaults.

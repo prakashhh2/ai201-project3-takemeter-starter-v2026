@@ -1,0 +1,189 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 31,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 31,
+    "accuracy": 0.41935483870967744,
+    "f1_macro": 0.4269005847953216,
+    "per_label": {
+      "analysis": {
+        "precision": 0.5,
+        "recall": 0.36363636363636365,
+        "f1": 0.4210526315789474,
+        "support": 11
+      },
+      "hot_take": {
+        "precision": 0.36363636363636365,
+        "recall": 0.3076923076923077,
+        "f1": 0.33333333333333337,
+        "support": 13
+      },
+      "reaction": {
+        "precision": 0.4166666666666667,
+        "recall": 0.7142857142857143,
+        "f1": 0.5263157894736842,
+        "support": 7
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "Easy - we had Chris Wood",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Thanks Ugarte I guess.",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "How about Micah's why do you think I work for every fucking broadcaster?",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "The Brady comments on Rooney from a few weeks back are popping back into my mind because I\u2019m reading pre college football stories and I really think the psychosis in American Football is underestimated.",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "I know its probably not going to happen. But i saw many arsenal fsns being upset that we are going for a player Julian Alvarez whose priority is going to Barca. Personally I don't think arsenal should turn away from Alvarez deal just because of that. Lots of players go through similar situations. For me Haalands move to City is a reference here. If I remember correctly, when Haaland joined City, he had a clause that let him go to Madrid if they pay a fee. That move never materialised, but Haaland has been an amazing player for them. Same thing can happen with Alvarez too.",
+      "gold": "analysis",
+      "predicted": "reaction"
+    },
+    {
+      "text": "CHRISSY CHRISSY WOOOD LA LA LA LA. Fun fact, he and Alan Shearer are the only two players in Premierleague history to have the goalscoring record for two clubs. Shearer for Blackburn/Newcastle and Wood for us/you lot.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "but why does the karma have to have such a high interest rate :(",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Didnt realise Palace game was on channel 5, I know the conference league is only a few years old and has only ever been on tnt but channel 5 just feels right for it. Shame the full tournament will be back on tnt always good to get more free to air football",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "McTominay at Man United. I'm not sure if he improved in that aspect but his 2nd touch always used to be a crunching tackle.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "In the last DD, I said the Mudryk inquiry is coming, and it is here. Spurs are predictable.",
+      "gold": "analysis",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Are we really hijacking Ndiaye if we were linked before spurs",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Rival fans just want to see us lose our cult leader manager",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "I think that this is the year lecce goodbyes us. They somehow managed to escape relegation last year but with Venezia who spent seriuos money and a promising Frosinone I doubt they can do the same. I just hope another southern mainland team can take their place. Palermo should be a given, unfortunately Catanzaro got raided. Maybe it's Avellino's year?",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Silva has quietly had a fantastic premier league run with them. When you look at the XIs they've been putting out, they have absolutely no right to be happily bobbing along mid table occasionally getting good results against bigger teams.",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "I still don't understand how they managed to survive last season. Cremonese were so clear in my books. But yeah, I think this is the year they get relegated. If Palermo don't get promoted this season, it ain't happening for a while. I reckon they have a better squad right now than like 3 or 4 Serie A teams.",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "They passed gone and collected \u00a3200 a long long time ago.",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "He has never played on the left for more than five games in a row, and on the right he's world class for a month every season then disappears for the rest. Surely you understand why people are iffy about paying 100M and huge wages for a hypothetical player. Maybe he completely changes by playing on the left full time, but maybe he doesn't.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Berta has absolutely Bottled this transfer window, such an incompetent sporting director, the club should sack him immediately.",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "I don't see how you've managed to decide these two scenarios are the same. Haaland wanted to sign for Man City, supposedly having a Real Madrid release clause in the future doesn't mean he never wanted to go there. Alvarez apparently has a severe aversion to playing Premier League football again, so if he doesn't want to be there, for Arsenal or any other team, that means he would start kicking up a stink as soon as Barcelona tried to sign him again. It's a comparison that makes no sense.",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "The gaping gap in Arsenal\u2019s squad is that they might need to play \u00a368m Eze at left wing sometimes. By far the best squad in the league",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "A lot of Liverpool fans suddenly questioning why people talk about transfer fees at all and believing that they are above talk of them. I wonder what happened to start this wave of epiphany.",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "I know they gave you Neymar and Messi too but calling Barca a feeder club is a bit harsh",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "It's club policy to always leave it one signing short.",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Yeah I genuinely thought about making a ping group or something here for a little prem predictions battle. I was too lazy though.",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "And just like that, the last player of the generation that me and my dad watched, argued, enjoyed, cried over is retired from the national team. I hate the passage of time\u2026",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Mudryk will take all the attention away from Spurs being interested in Tosin, who is absolutely tragic",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Currently writing up a post about Ancelotti's Chelsea, do you all have any thoughts or memories of that team?",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Enciso isn\u2019t that good, he\u2019s not an equivalent. It\u2019s the equivalent of someone saying oh no Spurs have Bryan Gil",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Cant wait for Bundesliga to finally start again on friday! Im buzzing all week already - I cannot wait to spend the entire weekend in front of the TV as I have no other obligations either. Man life is really not so bad sometimes I must say...",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "There is this Mexican football podcast that claims to have insider info on world cup ticket prices in Guadalajara. Apparently the cheapest category 3 are gonna start at +$525. Can\u2019t imagine how much worse it can be in the states and Canada.",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Depressing how predictable it all is",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    }
+  ]
+}
