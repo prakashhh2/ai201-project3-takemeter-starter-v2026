@@ -508,24 +508,42 @@ confidence signal.
 
 ## The Improvement
 
-**What I changed:**
+**What I changed:** I increased the training duration from 3 to 5 epochs. The
+learning rate, batch size, model, maximum length, split seeds, and data stayed
+the same.
 
-**Which diagnosis pointed at it:**
+**Which diagnosis pointed at it:** `reaction` had F1 0.000 across all three
+before seeds, so I tested whether the classifier was under-training on that
+boundary. I could not use a relabelling fix because the staff answer key is
+still unavailable, and I did not have new soccer examples to add.
 
 ### Run Log — After
 
+**Device:** CPU (`torch 2.14.1+cu130`).
+
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
+|---|---|---|---|---|
+| Overall accuracy | 0.645 | 0.581 | 0.516 | 0.129 |
+| Macro F1 | 0.490 | 0.438 | 0.388 | 0.102 |
+| F1 — `analysis` | 0.783 | 0.667 | 0.583 | 0.199 |
+| F1 — `hot_take` | 0.688 | 0.647 | 0.581 | 0.107 |
+| F1 — `reaction` | 0.000 | 0.000 | 0.000 | 0.000 |
+
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | ≥ 0.65 | 0.645 | 0.581 | 0.516 | MISSED |
+| 2. Every label F1 | ≥ 0.60 | analysis 0.783; hot_take 0.688; reaction 0.000 | analysis 0.667; hot_take 0.647; reaction 0.000 | analysis 0.583; hot_take 0.581; reaction 0.000 | MISSED |
+| 3. Label balance | 20%–50% each | 22.9%–41.5% | 22.9%–41.5% | 22.9%–41.5% | MET |
+| 4. Blind agreement | ≥ 80% | pending | pending | pending | PENDING |
+| 5. Confidence separation | most ≥ 0.70 and ≥ 0.10 above least | 0.700 vs 0.400 | 0.700 vs 0.300 | 0.800 vs 0.500 | MET |
 
 **Did it help, and how do I know:**
 
-<!-- If it didn't, say so. Relabelling that didn't help is a genuinely
-     interesting result and earns full credit. -->
+It helped the confidence criterion: all three after seeds passed it, whereas
+seed 7 failed before. It did not fix the core problem: `reaction` stayed at
+F1 0.000 in every seed, accuracy remained below 0.65 in all three after runs,
+and the average accuracy rose only from 0.548 to 0.581 while the seed spread
+was still 0.129. Five epochs was therefore a partial improvement, not a fix.
 
 
 
