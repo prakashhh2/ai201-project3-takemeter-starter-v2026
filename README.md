@@ -238,36 +238,6 @@ The `note` column records this workflow; no row was accepted without review.
 **Settings:** 3 epochs, learning rate `2e-5`, batch size 16, seed 42, and
 maximum sequence length 128.
 
-## Baseline vs. Trained
-
-**Prediction, written before checking the baseline:** I predict the trained
-model will beat the zero-shot baseline most clearly on `analysis` and
-`hot_take`, while `reaction` will remain the hardest label.
-
-The baseline used `facebook/bart-large-mnli`, the definitions in
-`label_definitions.txt`, and the same 31 held-out posts in `test_split.csv` as
-the trained model. It did not fall back to a random sample.
-
-| Measure | Baseline | Trained | Difference |
-|---|---|---|---|
-| Overall accuracy | 0.419 | 0.677 | +0.258 |
-| Macro F1 | 0.427 | 0.514 | +0.087 |
-| F1 — `analysis` | 0.421 | 0.833 | +0.412 |
-| F1 — `hot_take` | 0.333 | 0.710 | +0.376 |
-| F1 — `reaction` | 0.526 | 0.000 | -0.526 |
-
-The trained model beat the baseline on `analysis` and `hot_take`, as
-predicted, but `reaction` was still its hardest label and its F1 fell below
-the baseline. The baseline results are in `baseline_results.json`.
-
-### Definition ablation
-
-On the same 31 posts, removing the definitions and using bare label names
-reduced accuracy from 0.419 to 0.355 (-0.065) and macro F1 from 0.427 to 0.255
-(-0.172). The bare-label control is recorded in
-`baseline_bare_names_results.json`; the reported baseline above uses the
-definitions-based run.
-
 **Anything I changed from the defaults, and why:**
 
 Nothing. I used the notebook defaults.
@@ -334,20 +304,46 @@ recency rule did not fit.
 <!-- Both models on the same posts. `python baseline.py --trained results.json`
      prints this table for you. -->
 
+**Prediction, written before checking the baseline:** I predict the trained
+model will beat the zero-shot baseline most clearly on `analysis` and
+`hot_take`, while `reaction` will remain the hardest label.
+
+The baseline used `facebook/bart-large-mnli`, the definitions in
+`label_definitions.txt`, and the same 31 held-out posts in `test_split.csv` as
+the trained model. It did not fall back to a random sample.
+
 | Measure | Baseline | Trained | Difference |
 |---|---|---|---|
-| Overall accuracy |  |  |  |
-| Macro F1 |  |  |  |
-| F1 — `label_one` |  |  |  |
-| F1 — `label_two` |  |  |  |
+| Overall accuracy | 0.419 | 0.677 | +0.258 |
+| Macro F1 | 0.427 | 0.514 | +0.087 |
+| F1 — `analysis` | 0.421 | 0.833 | +0.412 |
+| F1 — `hot_take` | 0.333 | 0.710 | +0.376 |
+| F1 — `reaction` | 0.526 | 0.000 | -0.526 |
+
+The trained model beat the baseline on `analysis` and `hot_take`, as
+predicted, but `reaction` was still its hardest label and its F1 fell below
+the baseline. The baseline results are in `baseline_results.json`.
+
+### Definition ablation
+
+On the same 31 posts, removing the definitions and using bare label names
+reduced accuracy from 0.419 to 0.355 (-0.065) and macro F1 from 0.427 to 0.255
+(-0.172). The bare-label control is recorded in
+`baseline_bare_names_results.json`; the reported baseline above uses the
+definitions-based run.
 
 **What I predicted before I looked:**
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
+The trained model would beat the zero-shot baseline most clearly on `analysis`
+and `hot_take`, while `reaction` would remain the hardest label.
 
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
+Fine-tuning added a substantial overall accuracy gain over the definitions
+baseline (+0.258), especially for `analysis` and `hot_take`, but it did not
+solve `reaction` and was worse than the baseline on that label.
 
 
 
@@ -357,6 +353,20 @@ recency rule did not fit.
 
 <!-- Five criteria across three seeds. The notebook's section 6 prints the
      spread table; the Target and Verdict columns are yours. -->
+
+**Device:** CPU (`torch 2.14.1+cu130`).
+
+| Measure | Seed 42 | Seed 7 | Seed 2024 | Spread |
+|---|---|---|---|---|
+| Overall accuracy | 0.677 | 0.484 | 0.484 | 0.194 |
+| Macro F1 | 0.514 | 0.333 | 0.361 | 0.181 |
+| F1 — `analysis` | 0.833 | 0.400 | 0.522 | 0.433 |
+| F1 — `hot_take` | 0.710 | 0.600 | 0.562 | 0.147 |
+| F1 — `reaction` | 0.000 | 0.000 | 0.000 | 0.000 |
+
+Accuracy moved 0.194 across seeds, more than ten points. This dataset is too
+small or lopsided for a stable accuracy measure; the `reaction` test split
+also has only seven posts, so its per-label F1 is especially fragile.
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
@@ -371,17 +381,19 @@ recency rule did not fit.
 <!-- ⚠️ TYPED AS A MARKDOWN TABLE. The notebook prints one ready to paste.
      An image of a matrix earns nothing. -->
 
-| true \ predicted |  |  |  |
+| true \ predicted | analysis | hot_take | reaction |
 |---|---|---|---|
-| **** |  |  |  |
-| **** |  |  |  |
-| **** |  |  |  |
+| **analysis** | 10 | 1 | 0 |
+| **hot_take** | 2 | 11 | 0 |
+| **reaction** | 1 | 6 | 0 |
 
 **My biggest off-diagonal number, and what it means:**
 <!-- Not "the model made mistakes" — WHICH boundary it didn't learn, and which
      direction. "7 real analysis posts were called hot_take and only 3 went the
      other way" is a direction, not just an error rate. -->
-
+Six true `reaction` posts were predicted as `hot_take`, while zero true
+`hot_take` posts were predicted as `reaction`; the model is strongly biased
+toward the `hot_take` side of that boundary.
 
 
 ---
