@@ -370,11 +370,11 @@ also has only seven posts, so its per-label F1 is especially fragile.
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | ≥ 0.65 | 0.677 | 0.484 | 0.484 | MISSED |
+| 2. Every label F1 | ≥ 0.60 | analysis 0.833; hot_take 0.710; reaction 0.000 | analysis 0.400; hot_take 0.600; reaction 0.000 | analysis 0.522; hot_take 0.562; reaction 0.000 | MISSED |
+| 3. Label balance | 20%–50% each | 22.9%–41.5% | 22.9%–41.5% | 22.9%–41.5% | MET |
+| 4. Blind agreement | ≥ 80% | pending | pending | pending | PENDING |
+| 5. Confidence separation | most ≥ 0.70 and ≥ 0.10 above least | 0.800 vs 0.500 | 0.600 vs 0.500 | 0.700 vs 0.400 | MISSED |
 
 ### Confusion matrix
 
@@ -405,13 +405,39 @@ toward the `hot_take` side of that boundary.
 
 | # | Criterion | Target | Verdict | How I decided |
 |---|---|---|---|---|
-| 1 |  |  |  |  |
-| 2 |  |  |  |  |
-| 3 |  |  |  |  |
-| 4 |  |  |  |  |
-| 5 |  |  |  |  |
+| 1 | Overall accuracy | ≥ 0.65 in all three seeds | MISSED | Only seed 42 reached the target; seeds 7 and 2024 were 0.484. |
+| 2 | Every label F1 | ≥ 0.60 for every label in all three seeds | MISSED | `reaction` scored 0.000 in every seed, and `analysis`/`hot_take` also fell below 0.60 in some seeds. |
+| 3 | Label balance | 20%–50% per label | MET | The 205 labels are `analysis` 35.6%, `hot_take` 41.5%, and `reaction` 22.9%, all inside the target range. |
+| 4 | Blind agreement | ≥ 80% on 30 posts | PENDING | `data/staff_labels.csv` has not been supplied, so agreement cannot yet be calculated. |
+| 5 | Confidence separation | Most-confident third ≥ 0.70 and at least 0.10 above least-confident third | MISSED | Seed 7 reached only 0.600 for the most-confident third; seed 42 was 0.800 vs 0.500 and seed 2024 was 0.700 vs 0.400. |
 
 **Diagnoses**
+
+**Criterion 1 — missed:** The accuracy measure is unstable across splits. It
+moved from 0.677 to 0.484, a 0.194 spread, so the 31-post test set is too
+small or lopsided for a 0.65 target to hold reliably. The seven `reaction`
+posts in each test split make the result especially sensitive to which posts
+land there.
+
+**Criterion 2 — missed:** `reaction` is the failure, not just a slightly weak
+label: its F1 is 0.000 in all three seeds. The confusion matrices show every
+reaction post being called either `hot_take` or `analysis`; in seed 42, six
+true `reaction` posts became `hot_take` and none went the other way. This points
+to a genuinely hard `reaction`/`hot_take` boundary combined with too few
+examples (47 total, about seven in each test split). The agreement report is
+still unavailable, so I cannot yet tell whether inconsistent training labels
+also contributed.
+
+**Criterion 4 — pending:** This is not an evidence-based miss yet. I saved my
+30 labels, but the staff answer key is absent, so the 30-post agreement rate
+and the disagreement piles cannot be calculated.
+
+**Criterion 5 — missed:** Confidence was useful on seeds 42 and 2024 but not
+enough across all trials. Seed 7's most-confident third was correct on 0.600
+of 10 posts, only one post better than its least-confident third at 0.500.
+That small 10-post group and the near-identical mean confidence when right
+and wrong (0.395 versus 0.392) suggest weak calibration rather than a stable
+confidence signal.
 
 <!-- For each miss: the cause, and how you know. The four common causes are:
      too few examples for a label, a boundary you applied inconsistently, a
