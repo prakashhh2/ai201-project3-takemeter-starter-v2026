@@ -292,6 +292,18 @@ the post itself, especially the `analysis`/`hot_take` and
 `hot_take`/`reaction` boundaries, and corrected the rows where the evidence or
 recency rule did not fit.
 
+**Moment 3**
+
+- *What I asked for:* I used AI to compare the three-seed confusion matrices
+  before and after the five-epoch experiment and identify whether the main
+  failure looked like a thin-label problem, a hard boundary, or under-training.
+- *What came back:* The repeated pattern was that `reaction` posts were sent
+  to `hot_take` or `analysis`, with no `reaction` predictions; the extra epochs
+  improved confidence separation but did not change that boundary.
+- *What I changed:* I ran one controlled five-epoch experiment, reported it as
+  a partial improvement, and kept the conclusion that more epochs did not fix
+  the core label failure.
+
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
      Don't fill these in during unit 5.
@@ -460,7 +472,8 @@ confidence signal.
      data/staff_taxonomy.md, not your own — so every argument below is made
      from those definitions and those decision rules. -->
 
-**Agreement rate:** ___ / 30 = ___%
+**Agreement rate:** Pending — `data/staff_labels.csv` was not supplied, so I
+could not calculate the 30-post agreement rate.
 
 <!-- Nobody grades this number. A 60% who argues every disagreement from the
      stated rules beats a 95% who wrote "staff was right" nine times. Several
@@ -468,6 +481,9 @@ confidence signal.
      winning some of these. -->
 
 **Disagreements**
+
+Pending for the same reason: without the staff labels, there are no honest
+staff/mine pairs to adjudicate or sort into piles.
 
 <!-- Three lines each: the post, both labels, and who you think is right and
      why — grounded in the staff definitions you were both applying.
@@ -553,13 +569,32 @@ was still 0.129. Five epochs was therefore a partial improvement, not a fix.
 
 <!-- For each criterion still missed: what you'd do, and why you stopped. -->
 
+**Criterion 1 — overall accuracy:** I would collect more labeled posts and
+repeat the three-seed evaluation until the 31-post test result is less
+sensitive to the split. I stopped after the controlled five-epoch run because
+the current data are fixed for this milestone and the accuracy spread remained
+0.129, above the ten-point stability guideline.
 
+**Criterion 2 — every-label F1:** I would add at least 30 carefully labeled
+`reaction` examples and sharpen the `reaction`/`hot_take` boundary before
+retraining. I stopped because I had no new soccer posts to label and the staff
+answer key needed for a relabeling diagnosis is still missing; five epochs left
+`reaction` F1 at 0.000 in every seed.
+
+**Criterion 4 — blind agreement:** I would obtain `data/staff_labels.csv`, run
+`agreement.py`, and adjudicate every disagreement into the three required
+piles. I stopped because that external file was not present in the fork, so an
+agreement rate or disagreement rationale would be fabricated.
 
 **The gap between what I meant my labels to capture and what the model
 learned:**
 <!-- Two sentences. Your confusion matrix is the evidence. -->
-
-
+I meant `reaction` to capture immediate personal responses, separate from
+unsupported general `hot_take` claims, but the model learned a strong bias
+toward `hot_take` instead of learning that boundary. In the after seed-42
+matrix, all seven true `reaction` posts became `hot_take` or `analysis` (six
+became `hot_take`) and no post was predicted as `reaction`, while the
+`analysis`/`hot_take` distinction was learned much more successfully.
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
